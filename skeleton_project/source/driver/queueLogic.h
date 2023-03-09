@@ -1,6 +1,8 @@
 #pragma once
 
 
+typedef a_queue = in[2][4];
+
 typedef enum { 
     QUEUE_DOWN   = 0,
     QUEUE_UP     = 1
@@ -8,7 +10,7 @@ typedef enum {
 
 
 typedef struct{
-    int* p_queue[2][4];
+    a_queue p_queue;
     int next;
     int last;
 }Queue; 
