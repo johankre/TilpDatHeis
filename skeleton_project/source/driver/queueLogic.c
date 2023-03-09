@@ -17,5 +17,5 @@ int* init_queue(){
     queue.last = 0;
     queue.p_queue* = {{0, 0, 0, 0},
                       {0, 0, 0, 0}};
-    return queue;
+    return *queue;
 }
