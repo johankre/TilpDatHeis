@@ -65,7 +65,7 @@ void elevio_buttonLamp(int floor, ButtonType button, int value){
 
 void elevio_floorIndicator(int floor){
     assert(floor >= 0);
-    assert(floor < N_FLOORS);
+    assert(floor < N_FLOORS);    //gyldig floor
 
     pthread_mutex_lock(&sockmtx);
     send(sockfd, (char[4]){3, floor}, 4, 0);
