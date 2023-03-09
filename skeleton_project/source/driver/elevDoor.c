@@ -1,10 +1,13 @@
 
 #pragma once
 
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <signal.h>
+#include <time.h>
 
 #include "elevio.h"
-#include "driver/elevio.h"
+
 
 void openDoor() {
     elevio_doorOpenLamp(1);
