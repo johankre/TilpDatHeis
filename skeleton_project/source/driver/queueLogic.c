@@ -11,4 +11,11 @@
 #include "queueLogic.h"
 
 
-
+int* init_queue(){
+    Queue queue;
+    queue.next = 0;
+    queue.last = 0;
+    queue.p_queue* = {{0, 0, 0, 0},
+                      {0, 0, 0, 0}};
+    return queue;
+}
