@@ -35,6 +35,6 @@ void init_elevator_position(){
     }
 
     // Stopp heis når den er i etasje1
-    elevio_motorDirection(DIRN_UP);
+    elevio_motorDirection(DIRN_STOP);
     elevio_floorIndicator(1);
 }
