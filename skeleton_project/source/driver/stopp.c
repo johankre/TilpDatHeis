@@ -43,7 +43,7 @@ void stopButtonCaled(){
         }
 
     while(elevio_stopButton()){
-        printf("elevator stopped");
+        printf("elevator stopped\n");
     }
 
     // Skrur av stoppLamp og dorrOpenLamp

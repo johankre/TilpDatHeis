@@ -4,6 +4,7 @@
 #include <time.h>
 #include "driver/elevio.h"
 #include "driver/stopp.h"
+#include "driver/elevator_init.h"
 
 
 
@@ -13,7 +14,7 @@ int main(){
     printf("=== Example Program ===\n");
     printf("Press the stop button on the elevator panel to exit\n");
 
-    elevio_motorDirection(DIRN_UP);
+    init_elevator_position();
 
     while(1){
         int floor = elevio_floorSensor();
