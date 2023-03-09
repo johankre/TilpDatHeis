@@ -3,8 +3,9 @@
 #include <signal.h>
 #include <time.h>
 #include "driver/elevio.h"
+#include "driver/stopp.h"
 
-//hei hei hei
+
 
 int main(){
     elevio_init();
@@ -41,8 +42,7 @@ int main(){
         }
         
         if(elevio_stopButton()){
-            elevio_motorDirection(DIRN_STOP);
-            break;
+            stopButtonCaled();
         }
         
         nanosleep(&(struct timespec){0, 20*1000*1000}, NULL);
