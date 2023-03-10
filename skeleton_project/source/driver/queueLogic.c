@@ -17,7 +17,7 @@ void init_queue(Queue* queue){
     queue->next = 0;
     queue->last = 0;
     int num[2][4]= {{0, 0, 0, 0},
-                    {0, 0, 0, 0}}
+                    {0, 0, 0, 0}};
     queue->p_queue = &num;
 
 }
@@ -30,7 +30,7 @@ void delete_queue_element(Queue* queue, int floor){
 
 void set_queue_last(Queue *queue, int num){
     if(num > -1){
-        queue->last = int num;
+        queue->last = num;
     }
 }
 
