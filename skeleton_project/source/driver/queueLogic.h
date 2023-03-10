@@ -15,7 +15,7 @@ typedef struct{
 }Queue; 
 
 
-Queue init_queue();
+void init_queue(Queue*);
 
 
 

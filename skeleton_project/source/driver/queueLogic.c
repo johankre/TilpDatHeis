@@ -12,15 +12,14 @@
 #include "elevDoor.h"
 
 
-Queue init_queue(){
-    Queue queue;
-    queue.direction = QUEUE_UP;
-    queue.next = 0;
-    queue.last = 0;
+void init_queue(Queue* queue){
+    queue->direction = QUEUE_UP;
+    queue->next = 0;
+    queue->last = 0;
     int num[2][4]= {{0, 0, 0, 0},
                     {0, 0, 0, 0}}
-    queue.p_queue = &num;
-    return queue;
+    queue->p_queue = &num;
+
 }
 
 
