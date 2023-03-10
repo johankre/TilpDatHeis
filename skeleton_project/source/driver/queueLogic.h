@@ -1,8 +1,6 @@
 #pragma once
 
 
-typedef a_queue = in[2][4];
-
 typedef enum { 
     QUEUE_DOWN   = 0,
     QUEUE_UP     = 1
@@ -10,16 +8,20 @@ typedef enum {
 
 
 typedef struct{
-    a_queue p_queue;
+    int *p_queue;
     int next;
     int last;
+    QueueDirection direction;
 }Queue; 
 
 
-int* init_queue();
+Queue init_queue();
 
 
-void set_queue_last(int);
-void set_queue_next();
+void set_queue_last(Queue*, int);
+void set_queue_next(Queue*);
+void clear_queue(Queue*);
+void swith_queue_direction(Queue*);
+int sum_current_queue(Queue*);
 int get_queue_last();
 int get_queue_next();
