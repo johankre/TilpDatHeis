@@ -24,7 +24,7 @@ void init_queue(Queue* queue){
 
 
 void delete_queue_element(Queue* queue, int floor){
-    *(queue->p_queue + floor + 4 * queue->direction) = 0;
+    *(queue->p_queue)[queue->direction][floor] = 0;
 }
 
 
@@ -36,9 +36,10 @@ void set_queue_last(Queue *queue, int num){
 
 
 void clear_queue(Queue* queue){
-    int num = 0;
-    for(int i = 0; i < 8; i++){
-        (queue->p_queue + i) = &num;
+    for(int q = 0; q < 2; q++){
+        for(int floor = 0; floor < N_FLOORS; floor++){
+            *(queue->p_queue)[q][floor] = 0;
+        }
     }
 }
 
