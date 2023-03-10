@@ -14,7 +14,7 @@
 
 void init_queue(Queue* queue){
     queue->direction = QUEUE_UP;
-    queue->next = -1;
+    queue->next = -2;
     queue->last = 0;
     int num[2][4]= {{0, 0, 0, 0},
                     {0, 0, 0, 0}};
