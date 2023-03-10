@@ -32,7 +32,7 @@
 +----+----------------------------------------------------------------------------------------------+--+
 */
 
-void stopButtonCaled(Queue* queue){
+void stopButtonCaled(Queue *G_QUEUE queue){
     // Stopper motoren til heisen
     elevio_motorDirection(DIRN_STOP);
 
