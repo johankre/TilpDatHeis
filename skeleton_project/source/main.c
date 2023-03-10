@@ -27,11 +27,6 @@ int main(){
 
         buttonLight();
 
-        if(elevio_obstruction()){
-            elevio_stopLamp(1);
-        } else {
-            elevio_stopLamp(0);
-        }
         
         if(elevio_stopButton()){
             stopButtonCaled();
