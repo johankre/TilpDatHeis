@@ -1,3 +1,3 @@
 #pragma once
 
-void stopButtonCaled(Queue*);
+void stopButtonCaled();

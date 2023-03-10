@@ -6,8 +6,6 @@
 #include "driver/stopp.h"
 #include "driver/elevator_init.h"
 #include "driver/queueLogic.h"
-#include "driver/queue_input.h"
-
 
 
 int main(){
@@ -47,7 +45,8 @@ int main(){
 
         // Utfører nødstopp
         if(elevio_stopButton()){
-            stopButtonCaled(p_queue);
+            stopButtonCaled();
+            clear_queue(p_queue);
         }
         
 

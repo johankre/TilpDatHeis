@@ -48,9 +48,6 @@ void stopButtonCaled(Queue* queue){
         printf("elevator stopped\n");
     }
 
-    // Clear queue
-    clear_queue(queue);
-
     // Skrur av stoppLamp og dorrOpenLamp
     elevio_doorOpenLamp(0);
     elevio_stopLamp(0);    
