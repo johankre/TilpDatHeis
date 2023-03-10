@@ -37,7 +37,7 @@ int main(){
             stopButtonCaled();
         }
 
-        stopLight();
+        
         
         nanosleep(&(struct timespec){0, 20*1000*1000}, NULL);
     }
