@@ -6,9 +6,13 @@
 
 
 void dimAll() {
-    for (int i = 1; i<5; ++i) {
-
-    }
+    for(int f = 0; f < N_FLOORS; f++){
+            for(int b = 0; b < N_BUTTONS; b++){
+                
+                    elevio_buttonLamp(f, b, 0); //lyset dimmes
+                
+            }
+        }
 }
 
 void stopLight() {

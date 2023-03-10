@@ -17,6 +17,8 @@ int main(){
 
     init_elevator_position();
 
+    dimAll();
+
     while(1){
         int floor = elevio_floorSensor();
         printf("floor: %d \n",floor);
