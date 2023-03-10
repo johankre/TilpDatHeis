@@ -9,6 +9,7 @@
 #include "elevio.h"
 #include "con_load.h"
 #include "queueLogic.h"
+#include "elevDoor.h"
 
 
 Queue init_queue(){
@@ -20,6 +21,11 @@ Queue init_queue(){
                     {0, 0, 0, 0}}
     queue.p_queue = &num;
     return queue;
+}
+
+
+void delete_queue_element(Queue* queue, int floor){
+    *(queue->p_queue + floor + 4 * queue->direction) = 0;
 }
 
 
@@ -76,8 +82,18 @@ int set_queue_next(Queue *queue){
 
 
 void update_queue_internal(Queue* queue){
+    // Plasserer akktuel etasje i queue
     int floor = elevio_floorSensor();
     set_queue_last(queue, floor);
+
+    // Ser om akktuel etasje er lik ønsket etasje
+    if(queue->last == queue->next){
+        delete_queue_element(queue, queue->next);
+        openDoor();
+    }
+
+
+    // Finner nye ønsket etasje
     queue->next = set_queue_next(queue);
     if(queue->next == 0){
         swith_queue_direction(queue);

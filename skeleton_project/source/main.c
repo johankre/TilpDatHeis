@@ -6,6 +6,7 @@
 #include "driver/stopp.h"
 #include "driver/elevator_init.h"
 #include "driver/queueLogic.h"
+#include "driver/queue_input.h"
 
 
 
@@ -24,7 +25,11 @@ int main(){
     while(1){
         int floor = elevio_floorSensor();
         printf("floor: %d \n",floor);
-        
+
+
+        // Oppdaterer queue last og queue next
+        update_queue_internal(p_queue);
+
 
         for(int f = 0; f < N_FLOORS; f++){
             for(int b = 0; b < N_BUTTONS; b++){
@@ -33,16 +38,20 @@ int main(){
             }
         }
 
+
         if(elevio_obstruction()){
             elevio_stopLamp(1);
         } else {
             elevio_stopLamp(0);
         }
         
+
+        // Utfører nødstopp
         if(elevio_stopButton()){
             stopButtonCaled(p_queue);
         }
         
+
         nanosleep(&(struct timespec){0, 20*1000*1000}, NULL);
     }
 

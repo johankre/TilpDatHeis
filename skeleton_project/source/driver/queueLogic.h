@@ -21,9 +21,10 @@ Queue init_queue();
 
 void update_queue_internal(Queue*);
 void set_queue_last(Queue*, int);
-int set_queue_next(Queue*);
+void delete_queue_element(Queue*, int);
 void clear_queue(Queue*);
 void swith_queue_direction(Queue*);
+int set_queue_next(Queue*);
 int sum_current_queue(Queue*);
 int get_queue_last();
 int get_queue_next();
