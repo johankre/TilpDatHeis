@@ -8,4 +8,5 @@
 
 void dimAll();
 void stopLight();
-    
+void buttonLight();
+void dimLight(int floor);
