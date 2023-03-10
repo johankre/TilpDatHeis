@@ -13,7 +13,7 @@
 void input_floor(Queue* queue){
     for(int floor = 0; floor < N_FLOORS; floor++){
         for(int button = 0; button < N_BUTTONS; button++){
-            printf("placeholder")
+            printf("placeholder");
         }
     }
 }
