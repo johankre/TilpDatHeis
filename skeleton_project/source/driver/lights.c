@@ -11,6 +11,11 @@ void dimAll() {
     }
 }
 
-void floorLight(int floor) {
-    elevio_floorIndicator(floor);
+void stopLight() {
+    if (elevio_stopButton) {
+        elevio_stopLamp(1);
+    }
+    else {
+        elevio_stopLamp(0);
+        }
 }
