@@ -16,12 +16,7 @@ void dimAll() {
 }
 
 void stopLight() {
-    if (elevio_stopButton) {
-        elevio_stopLamp(1);
-    }
-    else {
-        elevio_stopLamp(0);
-        }
+    
 }
 
 void buttonLight() {
