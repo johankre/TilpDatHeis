@@ -23,7 +23,7 @@ int main(){
         int floor = elevio_floorSensor();
         printf("floor: %d \n",floor);
         
-        if (floor > 0) {
+        if (floor > -1) {
             elevio_floorIndicator(floor); //setter indicator hver floor
         }
 
