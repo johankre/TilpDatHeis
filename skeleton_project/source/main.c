@@ -13,9 +13,8 @@
 int main(){
     // Setter opp queue struct
     Queue queue;
-    queue = init_queue();
     Queue* p_queue = &queue;
-
+    init_queue(p_queue);
 
     elevio_init();
    
