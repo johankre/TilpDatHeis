@@ -20,6 +20,7 @@ int main(){
         int floor = elevio_floorSensor();
         printf("floor: %d \n",floor);
         
+        elevio_floorIndicator(floor); //setter indicator hver floor
 
         for(int f = 0; f < N_FLOORS; f++){
             for(int b = 0; b < N_BUTTONS; b++){
