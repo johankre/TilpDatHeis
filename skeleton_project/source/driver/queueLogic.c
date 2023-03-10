@@ -1,3 +1,4 @@
+/*
 #include <assert.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -19,3 +20,4 @@ int* init_queue(){
                       {0, 0, 0, 0}};
     return *queue;
 }
+*/
