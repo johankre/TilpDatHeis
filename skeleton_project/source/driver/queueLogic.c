@@ -36,8 +36,9 @@ void set_queue_last(Queue *queue, int num){
 
 
 void clear_queue(Queue* queue){
+    int num = 0;
     for(int i = 0; i < 8; i++){
-        *(queue->p_queue + i) = 0;
+        (queue->p_queue + i) = &num;
     }
 }
 
