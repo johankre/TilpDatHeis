@@ -14,6 +14,7 @@ typedef struct{
     QueueDirection direction;
 }Queue; 
 
+extern struct Queue G_QUEUE;
 
 void init_queue(Queue*);
 
