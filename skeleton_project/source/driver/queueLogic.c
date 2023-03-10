@@ -24,7 +24,9 @@ Queue init_queue(){
 
 
 void set_queue_last(Queue *queue, int num){
-    queue->last = int num;
+    if(num > -1){
+        queue->last = int num;
+    }
 }
 
 
@@ -37,11 +39,12 @@ void clear_queue(Queue* queue){
 
 int sum_current_queue(Queue* queue){
     int sum = 0;
-    for(int i = 0; i < 4; i++){
+    for(int i = queue->last; i < 4; i++){
        sum = *(queue->p_queue + i + queue->direction * 4);
     }
     return sum;
 }
+
 
 void swith_queue_direction(Queue* queue){
     if(queue->direction == QUEUE_DOWN){
@@ -52,6 +55,33 @@ void swith_queue_direction(Queue* queue){
 }
 
 
-void set_queue_next(Queue *queue){
+int set_queue_next(Queue *queue){
+    int next_floor = 0;
+    if(queue->direction == QUEUE_UP)
+        for(int i = queue->last; i < 4; i++){
+            next_floor = *(queue->p_queue + i + queue->direction * 4);
+            if(next_floor == 1){
+                return i;
+            }
+    } else {
+        for(int i = queue->last; i > -1; i--){
+            next_floor = *(queue->p_queue + i + queue->direction * 4);
+            if(next_floor == 1){
+                return i;
+            }
+        }
+    }
+    return next_floor;
+}
+
+
+void update_queue_internal(Queue* queue){
+    int floor = elevio_floorSensor();
+    set_queue_last(queue, floor);
+    queue->next = set_queue_next(queue);
+    if(queue->next == 0){
+        swith_queue_direction(queue);
+        queue->next = set_queue_next(queue);
+    }
 
 }

@@ -5,15 +5,20 @@
 #include "driver/elevio.h"
 #include "driver/stopp.h"
 #include "driver/elevator_init.h"
+#include "driver/queueLogic.h"
 
 
 
 int main(){
-    elevio_init();
-    
-    printf("=== Example Program ===\n");
-    printf("Press the stop button on the elevator panel to exit\n");
+    // Setter opp queue struct
+    Queue queue;
+    queue = init_queue();
+    Queue* p_queue = &queue;
 
+
+    elevio_init();
+   
+    // Kontrolert oppstart
     init_elevator_position();
 
     while(1){
@@ -35,7 +40,7 @@ int main(){
         }
         
         if(elevio_stopButton()){
-            stopButtonCaled();
+            stopButtonCaled(p_queue);
         }
         
         nanosleep(&(struct timespec){0, 20*1000*1000}, NULL);

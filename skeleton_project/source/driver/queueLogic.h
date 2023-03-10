@@ -18,8 +18,10 @@ typedef struct{
 Queue init_queue();
 
 
+
+void update_queue_internal(Queue*);
 void set_queue_last(Queue*, int);
-void set_queue_next(Queue*);
+int set_queue_next(Queue*);
 void clear_queue(Queue*);
 void swith_queue_direction(Queue*);
 int sum_current_queue(Queue*);
