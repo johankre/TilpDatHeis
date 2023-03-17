@@ -1,4 +1,4 @@
-#pragma once
+
 
 
 
@@ -30,10 +30,14 @@ void buttonLight() {
         }
 }
 
-void dimLight(floor) {
-    //if (floor in queue) {
-        //for (int b = 0; b < N_Buttons; b++) {
-            //elevio_buttonLamp(floor, b, 0)
-        //}
-    //}
+void dimLight(int floor) {
+    if (floor in down queue) {
+        elevio_buttonLamp(floor, BUTTON_HALL_DOWN, 0)
+        elevio_buttonLamp(floor, BUTTON_CAB, 0)
+        }
+    else {
+        elevio_buttonLamp(floor, BUTTON_HALL_UP, 0)
+        elevio_buttonLamp(floor, BUTTON_CAB, 0)
+    }
+    
 }
