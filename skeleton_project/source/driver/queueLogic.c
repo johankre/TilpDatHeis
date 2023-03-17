@@ -136,7 +136,7 @@ void input_floor(Queue* queue){
             }
         }
     }
-}
+
 
 
 void pirnt_queue(Queue* queue){
