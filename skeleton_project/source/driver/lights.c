@@ -26,12 +26,12 @@ void buttonLight() {
 
 void dimLight(int floor) {
     if (floor in queue[0]) {
-        elevio_buttonLamp(floor, BUTTON_HALL_DOWN, 0)
-        elevio_buttonLamp(floor, BUTTON_CAB, 0)
+        elevio_buttonLamp(floor, BUTTON_HALL_DOWN, 0);
+        elevio_buttonLamp(floor, BUTTON_CAB, 0);
         }
     else {
-        elevio_buttonLamp(floor, BUTTON_HALL_UP, 0)
-        elevio_buttonLamp(floor, BUTTON_CAB, 0)
+        elevio_buttonLamp(floor, BUTTON_HALL_UP, 0);
+        elevio_buttonLamp(floor, BUTTON_CAB, 0);
     }
     
 }
