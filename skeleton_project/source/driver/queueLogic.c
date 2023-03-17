@@ -151,5 +151,5 @@ void print_queue(Queue* queue){
         printf("\n");
     }
     */
-    printf("%d", (*queue->p_queue)[0][0]);
+    printf("%d", *(*queue->p_queue)[0][0]);
 }
