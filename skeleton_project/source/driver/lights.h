@@ -1,6 +1,6 @@
 //lys
 #pragma once
-#include "lights.c"
+
     
 
 //define light-functions

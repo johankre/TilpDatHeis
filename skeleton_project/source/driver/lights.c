@@ -1,9 +1,9 @@
-
+#pragma once
 
 
 
 #include "elevio.h"
-
+#include "queueLogic.h"
 
 void dimAll() {
     for(int f = 0; f < N_FLOORS; f++){
@@ -31,7 +31,7 @@ void buttonLight() {
 }
 
 void dimLight(int floor) {
-    if (floor in down queue) {
+    if (floor in queue[0]) {
         elevio_buttonLamp(floor, BUTTON_HALL_DOWN, 0)
         elevio_buttonLamp(floor, BUTTON_CAB, 0)
         }
