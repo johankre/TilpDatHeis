@@ -15,9 +15,7 @@ void dimAll() {
         }
 }
 
-void stopLight() {
-    
-}
+
 
 void buttonLight() {
     for(int f = 0; f < N_FLOORS; f++){
