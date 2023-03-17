@@ -63,7 +63,7 @@ void swith_queue_direction(Queue* queue){
 
 
 int set_queue_next(Queue *queue){
-    int next_floor = 0;
+    int next_floor = -2;
     if(queue->direction == QUEUE_UP)
         for(int i = queue->last; i < 4; i++){
             next_floor = *(queue->p_queue + i + queue->direction * 4);
@@ -90,13 +90,12 @@ void update_queue_internal(Queue* queue){
     // Ser om akktuel etasje er lik ønsket etasje
     if(queue->last == queue->next){
         delete_queue_element(queue, queue->next);
-        openDoor();
     }
 
 
     // Finner nye ønsket etasje
     queue->next = set_queue_next(queue);
-    if(queue->next == 0){
+    if(queue->next == -2){
         swith_queue_direction(queue);
         queue->next = set_queue_next(queue);
     }
@@ -107,7 +106,45 @@ void update_queue_internal(Queue* queue){
 void input_floor(Queue* queue){
     for(int floor = 0; floor < N_FLOORS; floor++){
         for(int button = 0; button < N_BUTTONS; button++){
-            printf("placeholder");
+
+            // Sjekker om knappen er blit trykket
+            if(elevio_callButton(floor, button)){
+
+                // Plasser i opp-kø eller ned-kø
+                if( button > 2){
+                    *(queue->p_queue)[button][floor] = 1;
+                }
+
+                // Hvis cab-button blir trykt
+                else {
+                    // Plasser i opp-kø
+                    if(floor > queue->last){
+                        *(queue->p_queue)[0][floor] = 1;
+                    }
+
+                    // Plasser i ned-kø
+                    else if(floor < queue-last){
+                        *(queue->p_queue)[1][floor] = 1;
+                    }
+
+                    // Plassere i kø, i forhold til om heisen er i opp-kø eller ned-kø
+                    else {
+                        *(queue->p_queue)[queue->direction][floor] = 1;
+                        }
+                    }
+                }
+            }
         }
+    }
+}
+
+
+void pirnt_queue(Queue* queue){
+    for(int i = 0, i < 2; i++){
+        for(int k = 0; k < 4; k++){
+            printf(*(queue->p_queue)[i][k]);
+            printf(" ");
+        }
+        printf("\n");
     }
 }

@@ -26,3 +26,5 @@ int get_queue_last();
 int get_queue_next();
 
 void input_floor(Queue*);
+
+void print_queue(Queue*);
