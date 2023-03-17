@@ -109,8 +109,6 @@ void input_floor(Queue* queue){
 
             // Sjekker om knappen er blit trykket
             if(elevio_callButton(floor, button)){
-                printf("%d ", floor);
-                printf("%d ", button);
 
                 // Plasser i opp-kø eller ned-kø
                 if( button > 2){
