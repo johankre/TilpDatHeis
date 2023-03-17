@@ -8,7 +8,7 @@ typedef enum {
 
 
 typedef struct{
-    int (*p_queue)[2][4];
+    int q_array[2][4];
     int next;
     int last;
     QueueDirection direction;

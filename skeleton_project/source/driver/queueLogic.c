@@ -18,13 +18,13 @@ void init_queue(Queue* queue){
     queue->last = 0;
     int num[2][4]= {{0, 0, 0, 0},
                     {0, 0, 0, 0}};
-    queue->p_queue = &num;
+    queue->q_array = num;
 
 }
 
 
 void delete_queue_element(Queue* queue, int floor){
-    *(queue->p_queue)[queue->direction][floor] = 0;
+    queue->q_array[queue->direction][floor] = 0;
 }
 
 
@@ -38,7 +38,7 @@ void set_queue_last(Queue *queue, int num){
 void clear_queue(Queue* queue){
     for(int q = 0; q < 2; q++){
         for(int floor = 0; floor < N_FLOORS; floor++){
-            *(queue->p_queue)[q][floor] = 0;
+            queue->q_array[q][floor] = 0;
         }
     }
 }
@@ -47,7 +47,7 @@ void clear_queue(Queue* queue){
 int sum_current_queue(Queue* queue){
     int sum = 0;
     for(int i = queue->last; i < 4; i++){
-       sum = *(queue->p_queue + i + queue->direction * 4);
+        sum += queue->q_array[queue->direction][i]
     }
     return sum;
 }
@@ -66,14 +66,12 @@ int set_queue_next(Queue *queue){
     int next_floor = -2;
     if(queue->direction == QUEUE_UP)
         for(int i = queue->last; i < 4; i++){
-            next_floor = *(queue->p_queue + i + queue->direction * 4);
-            if(next_floor == 1){
+            if(queue->q_array[queue->direction][i] == 1){
                 return i;
             }
     } else {
         for(int i = queue->last; i > -1; i--){
-            next_floor = *(queue->p_queue + i + queue->direction * 4);
-            if(next_floor == 1){
+            if(queue->q_array[queue->direction][i] == 1){
                 return i;
             }
         }
@@ -114,24 +112,24 @@ void input_floor(Queue* queue){
 
                 // Plasser i opp-kø eller ned-kø
                 if( button > 2){
-                    *(queue->p_queue)[button][floor] = 1;
+                    queue->q_array[button][floor] = 1;
                 }
 
                 // Hvis cab-button blir trykt
                 else {
                     // Plasser i opp-kø
                     if(floor > queue->last){
-                        *(queue->p_queue)[0][floor] = 1;
+                        queue->q_array[0][floor] = 1;
                     }
 
                     // Plasser i ned-kø
                     else if(floor < queue->last){
-                        *(queue->p_queue)[1][floor] = 1;
+                        queue->q_array[1][floor] = 1;
                     }
 
                     // Plassere i kø, i forhold til om heisen er i opp-kø eller ned-kø
                     else {
-                        *(queue->p_queue)[queue->direction][floor] = 1;
+                        queue->q_array[queue->direction][floor] = 1;
                         }
                     }
                 }
@@ -151,5 +149,5 @@ void print_queue(Queue* queue){
         printf("\n");
     }
     */
-    printf("%d", *(*queue->p_queue)[0][0]);
+    printf("%d", queue->q_array[0][0];
 }
