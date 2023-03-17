@@ -123,7 +123,7 @@ void input_floor(Queue* queue){
                     }
 
                     // Plasser i ned-kø
-                    else if(floor < queue-last){
+                    else if(floor < queue->last){
                         *(queue->p_queue)[1][floor] = 1;
                     }
 
@@ -140,7 +140,7 @@ void input_floor(Queue* queue){
 
 
 void pirnt_queue(Queue* queue){
-    for(int i = 0, i < 2; i++){
+    for(int i = 0; i < 2; i++){
         for(int k = 0; k < 4; k++){
             printf(*(queue->p_queue)[i][k]);
             printf(" ");
