@@ -1,4 +1,6 @@
 
+void openDoor() {
+
     while (elevio_obstruction() == 1) { //ser etter obstruksjon
         
     }
