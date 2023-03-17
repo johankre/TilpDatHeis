@@ -33,7 +33,6 @@ int main(){
 
         print_queue(p_queue);
 
-
         // Utfører nødstopp
         if(elevio_stopButton()){
             stopButtonCaled();

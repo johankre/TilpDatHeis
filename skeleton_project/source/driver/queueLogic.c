@@ -139,7 +139,7 @@ void input_floor(Queue* queue){
 
 
 
-void pirnt_queue(Queue* queue){
+void print_queue(Queue* queue){
     for(int i = 0; i < 2; i++){
         for(int k = 0; k < 4; k++){
             printf(*(queue->p_queue)[i][k]);
