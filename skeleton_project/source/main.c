@@ -26,13 +26,13 @@ int main(){
 
         // Oppdaterer queue last og queue next
         update_queue_internal(p_queue);
-        printf("a");
+   
    
 
         // Ser etter input
         input_floor(p_queue);
 
-        // print_queue(p_queue);
+        print_queue(p_queue);
 
         // Utfører nødstopp
         if(elevio_stopButton()){
