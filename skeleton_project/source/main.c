@@ -7,6 +7,8 @@
 #include "driver/elevator_init.h"
 #include "driver/queueLogic.h"
 
+#include "lights.h"
+#include "elevDoor.h"
 
 int main(){
     // Setter opp queue struct
@@ -31,7 +33,7 @@ int main(){
         // Oppdaterer queue last og queue next
         update_queue_internal(p_queue);
    
-   
+        openDoor();
 
         // Ser etter input
         input_floor(p_queue);
