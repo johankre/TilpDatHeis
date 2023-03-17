@@ -6,15 +6,16 @@
 #include "driver/stopp.h"
 #include "driver/elevator_init.h"
 
-#include "driver/lights.h"
-#include "driver/elevDoor.h"
 
 int main(){
-    elevio_init();
-    
-    printf("=== Example Program ===\n");
-    printf("Press the stop button on the elevator panel to exit\n");
+    // Setter opp queue struct
+    Queue queue;
+    Queue* p_queue = &queue;
+    init_queue(p_queue);
 
+    elevio_init();
+   
+    // Kontrolert oppstart
     init_elevator_position();
 
     dimAll();
@@ -22,20 +23,17 @@ int main(){
     while(1){
         int floor = elevio_floorSensor();
         printf("floor: %d \n",floor);
-        
-        if (floor > -1) {
-            elevio_floorIndicator(floor); //setter indicator hver floor
-        }
-
-        buttonLight();
 
         
+
         if(elevio_stopButton()){
             stopButtonCaled();
+            clear_queue(p_queue);
         }
 
         
         
+
         nanosleep(&(struct timespec){0, 20*1000*1000}, NULL);
     }
 

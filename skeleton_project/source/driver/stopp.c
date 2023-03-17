@@ -8,6 +8,8 @@
 
 #include "elevio.h"
 #include "con_load.h"
+#include "queueLogic.h"
+
 
 
 /*
@@ -30,17 +32,17 @@
 +----+----------------------------------------------------------------------------------------------+--+
 */
 
-void stopButtonCaled(){
-        // Stopper motoren til heisen
-        elevio_motorDirection(DIRN_STOP);
+void stopButtonCaled(Queue* queue){
+    // Stopper motoren til heisen
+    elevio_motorDirection(DIRN_STOP);
 
-        // Skrur på stopplyset
-        elevio_stopLamp(1);
+    // Skrur på stopplyset
+    elevio_stopLamp(1);
 
-        //Hvis heis er i etasje, åpne døra
-        if(elevio_floorSensor() > -1){
-            elevio_doorOpenLamp(1);
-        }
+    //Hvis heis er i etasje, åpne døra
+    if(elevio_floorSensor() > -1){
+        elevio_doorOpenLamp(1);
+    }
 
     while(elevio_stopButton()){
         printf("elevator stopped\n");
