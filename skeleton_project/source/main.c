@@ -6,7 +6,8 @@
 #include "driver/stopp.h"
 #include "driver/elevator_init.h"
 
-
+#include "driver/lights.h"
+#include "driver/elevDoor.h"
 
 int main(){
     elevio_init();
@@ -16,27 +17,24 @@ int main(){
 
     init_elevator_position();
 
+    dimAll();
+
     while(1){
         int floor = elevio_floorSensor();
         printf("floor: %d \n",floor);
         
-
-        for(int f = 0; f < N_FLOORS; f++){
-            for(int b = 0; b < N_BUTTONS; b++){
-                int btnPressed = elevio_callButton(f, b);
-                elevio_buttonLamp(f, b, btnPressed);
-            }
+        if (floor > -1) {
+            elevio_floorIndicator(floor); //setter indicator hver floor
         }
 
-        if(elevio_obstruction()){
-            elevio_stopLamp(1);
-        } else {
-            elevio_stopLamp(0);
-        }
+        buttonLight();
+
         
         if(elevio_stopButton()){
             stopButtonCaled();
         }
+
+        
         
         nanosleep(&(struct timespec){0, 20*1000*1000}, NULL);
     }

@@ -1,3 +1,4 @@
+/*
 #pragma once
 
 
@@ -23,3 +24,4 @@ void set_queue_last(int);
 void set_queue_next();
 int get_queue_last();
 int get_queue_next();
+*/
