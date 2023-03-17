@@ -5,52 +5,47 @@
 #include "driver/elevio.h"
 #include "driver/stopp.h"
 #include "driver/elevator_init.h"
+#include "driver/queueLogic.h"
 
 
 int main(){
     // Setter opp queue struct
-    Queue queue;
+    Queue queue = {
+        {{0,0,0,0}, {0,0,0,0}},
+        -2,
+        1,
+        QUEUE_DOWN
+    };
     Queue* p_queue = &queue;
-    init_queue(p_queue);
 
     elevio_init();
    
     // Kontrolert oppstart
     init_elevator_position();
 
-    dimAll();
-
     while(1){
-       int floor = elevio_floorSensor();
+        int floor = elevio_floorSensor();
         printf("floor: %d \n",floor);
 
 
         // Oppdaterer queue last og queue next
         update_queue_internal(p_queue);
-        printf("a");
+   
+   
 
-        for(int f = 0; f < N_FLOORS; f++){
-            for(int b = 0; b < N_BUTTONS; b++){
-                int btnPressed = elevio_callButton(f, b);
-                elevio_buttonLamp(f, b, btnPressed);
-            }
-        }
-        printf("b");
+        // Ser etter input
+        input_floor(p_queue);
+        drive_motor(p_queue);
 
-        if(elevio_obstruction()){
-            elevio_stopLamp(1);
-        } else {
-            elevio_stopLamp(0);
-        }
-        
-        printf("c");
+        print_system(p_queue);
+
         // Utfører nødstopp
         if(elevio_stopButton()){
             stopButtonCaled();
             clear_queue(p_queue);
         }
         
-        printf("d");
+
         nanosleep(&(struct timespec){0, 20*1000*1000}, NULL);
     }
 

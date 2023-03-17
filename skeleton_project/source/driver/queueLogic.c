@@ -13,18 +13,6 @@
 #include "elevDoor.h"
 
 
-
-void init_queue(Queue* queue){
-    queue->direction = QUEUE_UP;
-    queue->next = -2;
-    queue->last = 0;
-    int num[2][4]= {{0, 0, 0, 0},
-                    {0, 0, 0, 0}};
-    queue->q_array = num;
-
-}
-
-
 void delete_queue_element(Queue* queue, int floor){
     queue->q_array[queue->direction][floor] = 0;
 }
@@ -49,7 +37,7 @@ void clear_queue(Queue* queue){
 int sum_current_queue(Queue* queue){
     int sum = 0;
     for(int i = queue->last; i < 4; i++){
-        sum += queue->q_array[queue->direction][i]
+        sum += queue->q_array[queue->direction][i];
     }
     return sum;
 }
@@ -57,9 +45,9 @@ int sum_current_queue(Queue* queue){
 
 void swith_queue_direction(Queue* queue){
     if(queue->direction == QUEUE_DOWN){
-        queue->direction++;
-    } else {
         queue->direction--;
+    } else {
+        queue->direction++;
     }
 }
 
@@ -68,13 +56,27 @@ int set_queue_next(Queue *queue){
     int next_floor = -2;
     if(queue->direction == QUEUE_UP)
         for(int i = queue->last; i < 4; i++){
-            if(queue->q_array[queue->direction][i] == 1){
+            if(queue->q_array[QUEUE_UP][i] == 1){
                 return i;
+            }
+            else {
+                for(int i = 0; i < 4; i++){
+                    if(queue->q_array[QUEUE_UP][i] == 1){
+                        return i;
+                    }
+                }
             }
     } else {
         for(int i = queue->last; i > -1; i--){
-            if(queue->q_array[queue->direction][i] == 1){
+            if(queue->q_array[QUEUE_DOWN][i] == 1){
                 return i;
+            }
+            else {
+                for(int i = 3; i > -1; i--){
+                    if(queue->q_array[QUEUE_DOWN][i] == 1){
+                        return i;
+                    }
+                }
             }
         }
     }
@@ -113,7 +115,7 @@ void input_floor(Queue* queue){
                 printf("%d ", button);
 
                 // Plasser i opp-kø eller ned-kø
-                if( button > 2){
+                if( button < 2){
                     queue->q_array[button][floor] = 1;
                 }
 
@@ -121,12 +123,12 @@ void input_floor(Queue* queue){
                 else {
                     // Plasser i opp-kø
                     if(floor > queue->last){
-                        queue->q_array[0][floor] = 1;
+                        queue->q_array[QUEUE_UP][floor] = 1;
                     }
 
                     // Plasser i ned-kø
                     else if(floor < queue->last){
-                        queue->q_array[1][floor] = 1;
+                        queue->q_array[QUEUE_DOWN][floor] = 1;
                     }
 
                     // Plassere i kø, i forhold til om heisen er i opp-kø eller ned-kø
@@ -141,16 +143,28 @@ void input_floor(Queue* queue){
 
 
 
-void print_queue(Queue* queue){
-    /*
+void print_system(Queue* queue){
+
+    printf("last: %d \n", queue->last);
+    printf("next: %d \n", queue->next);
+    printf("direction: %d \n", queue->direction);
+
+    printf("Queue\n");
     for(int i = 0; i < 2; i++){
         for(int k = 0; k < 4; k++){
-            printf("%s", *(queue->p_queue + k + i * 4));
-            printf(" ");
+            printf("%d ", queue->q_array[i][k]);
         }
         printf("\n");
-    }
-    */
-    printf("%d", queue->q_array[0][0];
+    } 
+    printf("------------------------------------\n");
 }
 
+void drive_motor(Queue* queue){
+    if(queue->last < queue->next){
+        elevio_motorDirection(DIRN_UP);
+    } else if(queue->next == -2){
+        elevio_motorDirection(DIRN_STOP);
+    } else {
+        elevio_motorDirection(DIRN_DOWN);
+    }
+}

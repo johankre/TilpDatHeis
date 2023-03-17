@@ -1,10 +1,9 @@
-
 #pragma once
 
 
 typedef enum { 
-    QUEUE_DOWN   = 0,
-    QUEUE_UP     = 1
+    QUEUE_UP     = 0,
+    QUEUE_DOWN   = 1
 } QueueDirection;
 
 
@@ -27,5 +26,5 @@ int get_queue_last();
 int get_queue_next();
 
 void input_floor(Queue*);
-
-
+void print_system(Queue*);
+void drive_motor(Queue*);
