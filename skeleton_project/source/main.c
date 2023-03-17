@@ -31,7 +31,7 @@ int main(){
         // Ser etter input
         input_floor(p_queue);
 
-        
+        print_queue(p_queue);
 
 
         // Utfører nødstopp
