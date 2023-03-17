@@ -25,6 +25,9 @@ int main(){
     // Kontrolert oppstart
     init_elevator_position();
 
+    //dimmer alle lysene før oppstart
+    dimAll();
+
     while(1){
         int floor = elevio_floorSensor();
         printf("floor: %d \n",floor);
