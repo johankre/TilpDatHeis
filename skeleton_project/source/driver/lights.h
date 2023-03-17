@@ -7,5 +7,5 @@
 
 
 void dimAll();
-void floorLight(int floor);
-    
+void buttonLight();
+void dimLight(int floor);
