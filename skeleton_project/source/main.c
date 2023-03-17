@@ -26,6 +26,7 @@ int main(){
 
         // Oppdaterer queue last og queue next
         update_queue_internal(p_queue);
+        print("a");
    
 
         // Ser etter input
