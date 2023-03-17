@@ -1,3 +1,4 @@
+
 #include <assert.h>
 #include <stdlib.h>
 #include <sys/types.h>
@@ -10,6 +11,7 @@
 #include "con_load.h"
 #include "queueLogic.h"
 #include "elevDoor.h"
+
 
 
 void init_queue(Queue* queue){
@@ -149,3 +151,4 @@ void print_queue(Queue* queue){
     */
     printf("%d", *(*queue->p_queue)[0][0]);
 }
+
